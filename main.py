@@ -39,13 +39,41 @@ app.config.from_object(Config)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 #Setup SocketIO
-socketIO = SocketIO(app, cors_allowed_origins=Config.CORS_ORIGINS)
+socketIO = SocketIO(
+    app, 
+    cors_allowed_origins=app.config['CORS_ORIGINS'],
+    logger=True,
+    engineio_logger=True
+)
 
+# Make a database / Dict
+active_users = Dict[str, dict] = {}
 
+# Make a User
+def generate_guest_username() -> str:
+    timestamp = datetime.now().strftime('%H%M')
+    return f'Guest-{timestamp}{random.randint(1000, 9999)}'
 
+# Home Route
 @app.route('/')
 def index():
-    return "Hello World!"
+    if 'username' not in session:
+        session['username'] = generate_guest_username()
+        logger.info(f'New user: {session["username"]}')
+    return render_template(
+        'index.html', 
+        username=session['username'], 
+        rooms=app.config['CHAT_ROOMS']
+    )
+
+
+
+
+
+
+
+
+
 
 
 
