@@ -47,7 +47,7 @@ socketIO = SocketIO(
 )
 
 # Make a database / Dict
-active_users = Dict[str, dict] = {}
+active_users : Dict[str, dict] = {}
 
 # Make a User
 def generate_guest_username() -> str:
