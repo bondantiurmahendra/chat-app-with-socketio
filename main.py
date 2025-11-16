@@ -4,7 +4,7 @@ import os
 import random
 import logging
 from datetime import datetime
-from typing import Dict
+from typing import Dict, List, Optional
 
 from flask import Flask, request, render_template, session
 from flask_socketio import SocketIO, emit, join_room, leave_room

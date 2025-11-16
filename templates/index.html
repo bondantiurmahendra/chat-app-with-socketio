@@ -7,6 +7,7 @@
     rel="stylesheet" 
     href="{{ url_for('static', filename='css/style.css') }}">
     <title>Chat App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 </head>
 <body>
     <h2>Welcome, <span id="username">{{ username }}</span></h2>
@@ -15,7 +16,7 @@
             <div class="room-list">
                 <h3>Rooms</h3>
                 {% for room in rooms %}
-                <div class="room-item">
+                <div class="room-item" onclick="joinRoom('{{ room }}')">
                     {{ room }}
                 </div>
                 {% endfor %}
@@ -28,10 +29,11 @@
         <div class="main-chat">
             <div id="chat"></div>
             <div class="input-area">
-                <input type="text", id="message", placeholder="Type your message here...">
-                <button>Send</button>
+                <input type="text", id="message", placeholder="Type your message here...", onclick="handleKeyPress(event)"/>
+                <button onclick="sendMessage()">Send</button>
             </div>
         </div>
     </div>
+    <script src="{{ url_for('static', filename='chat.js')}}"></script>
 </body>
 </html>
