@@ -39,7 +39,7 @@ app.config.from_object(Config)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 #Setup SocketIO
-socketIO = SocketIO(
+socketio = SocketIO(
     app, 
     cors_allowed_origins=app.config['CORS_ORIGINS'],
     logger=True,
@@ -68,7 +68,7 @@ def index():
 
 
 # Make a connection
-@socketIO.event
+@socketio.event
 def connect():
     try:
         if 'username' not in session:
@@ -91,7 +91,7 @@ def connect():
 
 
 # Make a disconnection
-@socketIO.event
+@socketio.event
 def disconnect():
     try:
         if request.sid in active_users:
@@ -108,7 +108,7 @@ def disconnect():
         logger.error(f'Failed to disconnect: {e}')
 
 
-@socketIO.on('join')
+@socketio.on('join')
 def on_join(data:dict):
     try:
         username = data['username']
@@ -131,7 +131,7 @@ def on_join(data:dict):
     except Exception as e:
         logger.error({e})
 
-@socketIO.on('leave')
+@socketio.on('leave')
 def on_leave(data:dict):
     try:
         username = data['username']
@@ -153,7 +153,7 @@ def on_leave(data:dict):
         logger.error({e})
 
 
-@socketIO.event
+@socketio.on('message')
 def handle_message(data:dict):
     try:
         username = session['username']
@@ -202,7 +202,7 @@ def handle_message(data:dict):
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    socketIO.run(
+    socketio.run(
         app, 
         host='0.0.0.0', 
         port=port,
