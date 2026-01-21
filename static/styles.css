@@ -1,21 +1,21 @@
 :root {
-    --primary: #2c3e50;
-    --secondary: #34495e;
-    --accent: #3498db;
-    --light: #ecf0f1;
-    --success: #2ecc71;
-    --warning: #f1c40f;
-    --danger: #e74c3c;
-    --text-dark: #2c3e50;
-    --text-light: #ffffff;
-    --shadow: 0 2px 5px rgba(0,0,0,0.1);
+    --primary: #bbdefb;
+    --secondary: #90caf9;
+    --accent: #4fc3f7;
+    --light: #2d2d2d;
+    --success: #66bb6a;
+    --warning: #ffa726;
+    --danger: #ef5350;
+    --text-dark: #ffffff;
+    --text-light: #121212;
+    --shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 body { 
     margin: 0; 
     padding: 0; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f6fa;
+    background-color: #121212;
     color: var(--text-dark);
 }
 
@@ -23,7 +23,7 @@ h2 {
     color: var(--primary);
     padding: 20px;
     margin: 0;
-    background: white;
+    background: #1e1e1e;
     box-shadow: var(--shadow);
 }
 
@@ -36,7 +36,7 @@ h2 {
 
 .sidebar { 
     width: 250px;
-    background: white;
+    background: #1e1e1e;
     border-radius: 10px;
     box-shadow: var(--shadow);
     display: flex;
@@ -51,7 +51,7 @@ h2 {
     color: var(--primary);
     margin-top: 0;
     padding-bottom: 10px;
-    border-bottom: 2px solid var(--light);
+    border-bottom: 2px solid #333;
 }
 
 .room-item, .user-item {
@@ -60,10 +60,11 @@ h2 {
     border-radius: 5px;
     transition: all 0.3s ease;
     cursor: pointer;
+    color: var(--text-dark);
 }
 
 .room-item:hover, .user-item:hover {
-    background: var(--light);
+    background: #333;
     transform: translateX(5px);
 }
 
@@ -77,7 +78,7 @@ h2 {
     flex-grow: 1; 
     display: flex; 
     flex-direction: column;
-    background: white;
+    background: #1e1e1e;
     border-radius: 10px;
     box-shadow: var(--shadow);
     overflow: hidden;
@@ -87,7 +88,7 @@ h2 {
     flex-grow: 1; 
     padding: 20px;
     overflow-y: auto;
-    background: white;
+    background: #121212;
 }
 
 .message { 
@@ -97,6 +98,7 @@ h2 {
     max-width: 80%;
     position: relative;
     line-height: 1.4;
+    color: var(--text-dark);
 }
 
 .message.own { 
@@ -107,13 +109,13 @@ h2 {
 }
 
 .message.other { 
-    background: var(--light);
+    background: #2d2d2d;
     margin-right: auto;
     border-bottom-left-radius: 2px;
 }
 
 .message.system { 
-    background: #fff3e0;
+    background: #333;
     color: var(--secondary);
     font-style: italic;
     max-width: 100%;
@@ -131,23 +133,25 @@ h2 {
     display: flex; 
     gap: 10px; 
     padding: 20px;
-    background: var(--light);
-    border-top: 1px solid rgba(0,0,0,0.1);
+    background: #1e1e1e;
+    border-top: 1px solid #333;
 }
 
 #message { 
     flex-grow: 1; 
     padding: 12px 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #444;
     border-radius: 25px;
     outline: none;
     font-size: 1em;
     transition: all 0.3s ease;
+    background: #2d2d2d;
+    color: var(--text-dark);
 }
 
 #message:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.2);
 }
 
 button { 
@@ -155,14 +159,14 @@ button {
     border: none;
     border-radius: 25px;
     background: var(--accent);
-    color: white;
+    color: var(--text-light);
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
 }
 
 button:hover {
-    background: #2980b9;
+    background: #29b6f6;
     transform: translateY(-1px);
 }
 
@@ -176,16 +180,16 @@ button:active {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--light);
+    background: #1e1e1e;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #bdc3c7;
+    background: #444;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #95a5a6;
+    background: #666;
 }
 
 /* Animations */
